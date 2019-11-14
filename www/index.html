@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+  function dropDown(){$("#dropdown").click(function(){
+    if ($("#myTopnav").hasClass("topnav")) {
+      $("#myTopnav").addClass("responsive");
+    } else {
+      $("#myTopnav").attr("class","topnav");
+    }
+  })
+};
+</script>
+
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <a href="index.html" class="active">Home</a>
+  <a href="displayfile.html">Display files and folders</a>
+  <a href="readwrite.html">Read and Write a File</a>
+  <a href="takepic.html">Take a Picture</a>
+  <a href="accel.html">Use the Accelerometer</a>
+  <a href="#" style="font-size:15px;" id="dropdown" class="icon" onclick="dropDown()">&#9776;</a>
+</div>
+
+<div style="padding-left:16px">
+  <h2>Please Select from the following list using the drop down Menu </h2>
+  
+  <p>Charles Black, Rae Italia, Christian Carr, Nic Hawley, Tyler Cubarney</p>
+</div>
+</body>
+</html>

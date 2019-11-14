@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <title>Blank App</title>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+  function dropDown(){$("#dropdown").click(function(){
+    if ($("#myTopnav").hasClass("topnav")) {
+      $("#myTopnav").addClass("responsive");
+    } else {
+      $("#myTopnav").attr("class","topnav");
+    }
+  })
+};
+</script>
+
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <a href="index.html" class="active">Home</a>
+  <a href="displayfile.html">Display files and folders</a>
+  <a href="readwrite.html">Read and Write a File</a>
+  <a href="takepic.html">Take a Picture</a>
+  <a href="accel.html">Use the Accelerometer</a>
+  <a href="#" style="font-size:15px;" id="dropdown" class="icon" onclick="dropDown()">&#9776;</a>
+</div>
+        <script type="text/javascript" src="cordova.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+			myFunction() {
+  				x = $(#myTopnav).attr('class');
+  				if (x === "topnav") {
+    				x += " responsive";
+  				} else {
+    				x = "topnav";
+  				}
+			}
+		</script>
+        <script>
+        	document.addEventListener("deviceReady", onDeviceReady, false);
+   			document.addEventListener("deviceReady", onDeviceReady2, false);
+
+
+			function onDeviceReady() { 
+   				console.log("Device ready...");
+   				document.getElementById('btn').addEventListener('click', getCameraImage, false);
+  				console.log("button active...");
+			}
+
+			function onDeviceReady2() { 
+   				console.log("Device ready...");
+   				document.getElementById('btn2').addEventListener('click', getCameraImage2, false);
+  				console.log("button active...");
+			}
+
+			function getCameraImage(){
+				let opts = {
+					quality : 20, 
+					allowEdit : false, 
+					destinationType : Camera.DestinationType.FILE_URI,
+					sourceType : Camera.PictureSourceType.CAMERA,
+					mediaType : Camera.MediaType.PICTURE,
+					encodingType : Camera.EncodingType.JPEG,
+					cameraDirection : Camera.Direction.BACK,
+					targetWidth: 300,
+					targetHeight : 400
+				};
+	
+				navigator.camera.getPicture(onCaptureSuccess, onCaptureError, opts);
+			}
+
+			function getCameraImage2(){
+				let opts2 = {
+					quality : 20, 
+					allowEdit : false, 
+					destinationType : Camera.DestinationType.FILE_URI,
+					sourceType : Camera.PictureSourceType.CAMERA,
+					mediaType : Camera.MediaType.PICTURE,
+					encodingType : Camera.EncodingType.JPEG,
+					cameraDirection : Camera.Direction.BACK,
+					targetWidth: 300,
+					targetHeight : 400
+				};
+	
+				navigator.camera.getPicture(onCaptureSuccess2, onCaptureError2, opts2);
+			}
+
+
+			function onCaptureSuccess(ImageURI){
+			document.images[2].src = ImageURI;
+			}
+
+			function onCaptureSuccess2(ImageURI){
+			document.images[0].src = ImageURI;
+			document.images[1].src = ImageURI;
+			document.images[3].src = ImageURI;
+			document.images[4].src = ImageURI;
+			}
+
+			function onCaptureError(message){
+				var msg = document.getElementById('msg');
+				msg.textContent = 'Capture error: ' + message;
+	
+			}
+
+			function onCaptureError2(message){
+				var msg2 = document.getElementById('msg2');
+				msg2.textContent = 'Capture error: ' + message;
+	
+			}
+        </script>
+        <button id="btn">Capture photo</button>
+        <button id="btn2">Capture photo 2</button><br /><br /><br /><br /><br />
+		<img id="cameraImage2" height="15px" width="330px" style="position: absolute; left:15px; top:85px; z-index: -1" src="img/logo.png" />
+		<img id="cameraImage2"  height="15px" width="330px" style="position: absolute; left:15px; top:400px; z-index: -1" src="img/logo.png" />
+
+		<img id="cameraImage" height="301" width="300" style="position: absolute; left: 30px; top:100px; z-index: -1" src="img/logo.png" />
+
+		<img id="cameraImage2"  height="330px" width="15px" style="position: absolute; left:330px; top:85px; z-index: -1" src="img/logo.png" />
+		<img id="cameraImage2"  height="330px" width="15px" style="position: absolute; left:15px; top:85px; z-index: -1" src="img/logo.png" />
+    </body>
+</html>
